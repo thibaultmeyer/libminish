@@ -117,22 +117,6 @@ function minish_string_uppercase() {
 }
 
 
-# Converts a string to title case.
-#
-# Arguments:
-#
-#   $1 - [IN][REQUIRED] String to convert
-#
-# Example:
-#
-#   minish_string_titlecase "hello world"
-function minish_string_titlecase() {
-
-    # shellcheck disable=SC2001
-    echo "${1}" | sed "s/\b\(.\)/\u\1/g"
-}
-
-
 # Reverses a string.
 #
 # Arguments:

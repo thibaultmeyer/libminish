@@ -8,8 +8,21 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-            -   name: Check out code
+            -   name: Checkout repository
                 uses: actions/checkout@v3
 
             -   name: Run ShellCheck
                 uses: ludeeus/action-shellcheck@master
+
+
+    bats:
+        name: Bash Automated Testing System
+        runs-on: ubuntu-latest
+        container: bats/bats:latest
+
+        steps:
+            -   name: Checkout repository
+                uses: actions/checkout@v3
+
+            -   name: Run Bash Automated Testing System
+                run: bats --verbose-run --recursive ./test/
