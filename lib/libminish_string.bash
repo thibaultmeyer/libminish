@@ -2,8 +2,8 @@
 #
 # Arguments:
 #
-#   $1 - [IN][REQUIRED] Element to search
-#   $2 - [IN][REQUIRED] Sentence in which search given element
+#   $1 - [IN][REQUIRED] Sentence in which search given element
+#   $2 - [IN][REQUIRED] substring or character to search
 #
 # Example:
 #
@@ -15,8 +15,8 @@ function minish_string_indexof() {
         return
     fi
 
-    local -r minish_strindexof_subpart="${2/${1}*/}"
-    if [[ "${minish_strindexof_subpart}" == "${2}" ]]; then
+    local -r minish_strindexof_subpart="${1/${2}*/}"
+    if [[ "${minish_strindexof_subpart}" == "${1}" ]]; then
         echo "-1"
         return
     fi
@@ -208,4 +208,26 @@ function minish_string_startswith() {
 function minish_string_replace() {
 
     echo "${1//${2}/${3}}"
+}
+
+
+# Extracts the substring of the given string at the given start position with the given length.
+#
+# Arguments:
+#
+#   $1 - [IN][REQUIRED] String to take a substring from
+#   $2 - [IN][REQUIRED] Starting position
+#   $3 - [IN][OPTIONAL] Length of string to extract
+#
+# Example:
+#
+#   minish_string_substr "hello world" 0 5
+#   minish_string_substr "hello world" 6
+function minish_string_substr() {
+
+    if [[ -z "${3}" ]]; then
+        echo "${1:${2}}"
+    else
+        echo "${1:${2}:${3}}"
+    fi
 }
