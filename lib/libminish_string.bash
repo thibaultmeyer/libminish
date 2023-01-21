@@ -87,6 +87,38 @@ function minish_string_rtrim() {
 }
 
 
+# Capitalizes the first letter of each word.
+#
+# Arguments:
+#
+#   $1 - [IN][REQUIRED] String to capitalize
+#
+# Example:
+#
+#   minish_string_capitalize "hello world"
+function minish_string_capitalize() {
+
+    local -r minish_strcap_lower="$(echo "${1}" | tr '[:upper:]' '[:lower:]')"
+    local minish_strcap_tmp=""
+    local minish_strcap_need_uppercase=true
+
+    for (( idx = 0; idx < ${#minish_strcap_lower}; idx++ )); do
+        if [[ ${minish_strcap_need_uppercase} == true ]]; then
+            minish_strcap_tmp="${minish_strcap_tmp}$(echo "${minish_strcap_lower:${idx}:1}" | tr '[:lower:]' '[:upper:]')"
+            minish_strcap_need_uppercase=false
+        else
+            minish_strcap_tmp="${minish_strcap_tmp}${minish_strcap_lower:${idx}:1}"
+        fi
+
+        if [[ "${minish_strcap_lower:${idx}:1}" == " " ]]; then
+            minish_strcap_need_uppercase=true
+        fi
+    done
+
+    echo "${minish_strcap_tmp}"
+}
+
+
 # Converts a string to lower case letters.
 #
 # Arguments:
@@ -130,8 +162,8 @@ function minish_string_reverse() {
 
     local rev=""
 
-    for (( i = 0; i < ${#1}; i++ )); do
-        rev="$rev${1:~i:1}"
+    for (( idx = 0; idx < ${#1}; idx++ )); do
+        rev="${rev}${1:~idx:1}"
     done
 
     echo "$rev"
