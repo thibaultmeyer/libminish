@@ -2,7 +2,7 @@
 #
 # Arguments:
 #
-#   $1 - URL-encoded string
+#   $1 - [IN][REQUIRED] URL-encoded string
 #
 # Example:
 #

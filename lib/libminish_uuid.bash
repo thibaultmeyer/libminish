@@ -22,6 +22,10 @@ function minish_uuid_generate4() {
 
 # Checks if it is a valid UUID.
 #
+# Arguments:
+#
+#   $1 - [IN][REQUIRED] UUID to check
+#
 # Example:
 #
 #   if minish_uuid_isvalid "f49dae94-b841-4bfb-b18a-e59534579e69"; then
