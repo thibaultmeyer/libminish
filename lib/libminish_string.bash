@@ -130,7 +130,7 @@ function minish_string_capitalize() {
 #   minish_string_lowercase "HELLO WORLD"
 function minish_string_lowercase() {
 
-    echo "${1}" | tr '[:upper:]' '[:lower:]'
+    echo "${1,,}"
 }
 
 
@@ -145,7 +145,7 @@ function minish_string_lowercase() {
 #   minish_string_uppercase "hello world"
 function minish_string_uppercase() {
 
-    echo "${1}" | tr '[:lower:]' '[:upper:]'
+    echo "${1^^}"
 }
 
 
