@@ -6,14 +6,12 @@
 #
 # Example:
 #
-#   minish_fs_isblockdevice "/dev/tty0"
+#   if minish_fs_isblockdevice "/dev/tty0"; then
+#       echo "BLOCK DEVICE"
+#   fi
 function minish_fs_isblockdevice() {
 
-    if [[ -b "${1}" ]]; then
-        echo "1"
-    else
-        echo "0"
-    fi
+    [[ -b "${1}" ]]
 }
 
 
@@ -25,14 +23,12 @@ function minish_fs_isblockdevice() {
 #
 # Example:
 #
-#   minish_fs_ischaracterdevice "/dev/tty0"
+#   if minish_fs_ischaracterdevice "/dev/tty0"; then
+#       echo "CHARACTER DEVICE"
+#   fi
 function minish_fs_ischaracterdevice() {
 
-    if [[ -c "${1}" ]]; then
-        echo "1"
-    else
-        echo "0"
-    fi
+    [[ -c "${1}" ]]
 }
 
 
@@ -44,14 +40,12 @@ function minish_fs_ischaracterdevice() {
 #
 # Example:
 #
-#   minish_fs_isdirectory "/tmp"
+#   if minish_fs_isdirectory "/tmp"; then
+#       echo "DIR"
+#   fi
 function minish_fs_isdirectory() {
 
-    if [[ -d "${1}" ]]; then
-        echo "1"
-    else
-        echo "0"
-    fi
+    [[ -d "${1}" ]]
 }
 
 
@@ -63,14 +57,12 @@ function minish_fs_isdirectory() {
 #
 # Example:
 #
-#   minish_fs_isnotemptyfile "/tmp/file"
+#   if minish_fs_isnotemptyfile "/tmp/file"; then
+#       echo "NOT EMPTY"
+#   fi
 function minish_fs_isnotemptyfile() {
 
-    if [[ -s "${1}" ]]; then
-        echo "1"
-    else
-        echo "0"
-    fi
+    [[ -s "${1}" ]]
 }
 
 
@@ -82,15 +74,16 @@ function minish_fs_isnotemptyfile() {
 #
 # Example:
 #
-#   minish_fs_isexist "/tmp"
-#   minish_fs_isexist "/tmp/file"
+#   if minish_fs_isexist "/tmp"; then
+#       echo "DIR EXISTS"
+#   fi
+#
+#   if minish_fs_isexist "/tmp/file"; then
+#       echo "FILE EXISTS"
+#   fi
 function minish_fs_isexist() {
 
-    if [[ -e "${1}" ]]; then
-        echo "1"
-    else
-        echo "0"
-    fi
+    [[ -e "${1}" ]]
 }
 
 
@@ -102,14 +95,12 @@ function minish_fs_isexist() {
 #
 # Example:
 #
-#   minish_fs_isfile "/tmp/file"
+#   if minish_fs_isfile "/tmp/file"; then
+#       echo "FILE"
+#   fi
 function minish_fs_isfile() {
 
-    if [[ -f "${1}" ]]; then
-        echo "1"
-    else
-        echo "0"
-    fi
+    [[ -f "${1}" ]]
 }
 
 
@@ -121,14 +112,12 @@ function minish_fs_isfile() {
 #
 # Example:
 #
-#   minish_fs_ispipe "/tmp/pipe"
+#   if minish_fs_ispipe "/tmp/pipe"; then
+#       echo "PIPE"
+#   fi
 function minish_fs_ispipe() {
 
-    if [[ -p "${1}" ]]; then
-        echo "1"
-    else
-        echo "0"
-    fi
+    [[ -p "${1}" ]]
 }
 
 
@@ -140,14 +129,12 @@ function minish_fs_ispipe() {
 #
 # Example:
 #
-#   minish_fs_issymboliclink "/tmp/examplesymlink"
+#   if minish_fs_issymboliclink "/tmp/examplesymlink"; then
+#       echo "SYM. LINK"
+#   fi
 function minish_fs_issymboliclink() {
 
-    if [[ -h "${1}" ]]; then
-        echo "1"
-    else
-        echo "0"
-    fi
+    [[ -h "${1}" ]]
 }
 
 
@@ -159,12 +146,10 @@ function minish_fs_issymboliclink() {
 #
 # Example:
 #
-#   minish_fs_issocket "/tmp/nginx.socket"
+#   if minish_fs_issocket "/tmp/nginx.socket"; then
+#       echo "SOCKET"
+#   fi
 function minish_fs_issocket() {
 
-    if [[ -S "${1}" ]]; then
-        echo "1"
-    else
-        echo "0"
-    fi
+    [[ -S "${1}" ]]
 }
