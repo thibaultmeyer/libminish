@@ -10,8 +10,8 @@
 #   minish_string_indexof "wo" "hello world"
 function minish_string_indexof() {
 
-    if [[ "${#1}" == "0" || "${#2}" == "0" ]]; then
-        echo "-1"
+    if [[ "${#1}" == "0" && "${#2}" == "0" ]]; then
+        echo "0"
         return
     fi
 
