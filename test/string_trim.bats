@@ -23,3 +23,10 @@ load ../lib/libminish_string
     [ "$status" -eq 0 ]
     [ "$output" == "Hello" ]
 }
+
+@test "minish_string_trim() only contains whitespaces" {
+    run minish_string_trim "     "
+
+    [ "$status" -eq 0 ]
+    [ "$output" == "" ]
+}

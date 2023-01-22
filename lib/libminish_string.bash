@@ -247,3 +247,41 @@ function minish_string_substr() {
         echo "${1:${2}:${3}}"
     fi
 }
+
+
+# Checks if the given string is empty.
+#
+# Arguments:
+#
+#   $1 - [IN][REQUIRED] String to check
+#
+# Example:
+#
+#   if minish_string_isempty ""; then
+#       echo "EMPTY"
+#   fi
+function minish_string_isempty() {
+
+    [[ "${1}" == "" ]]
+}
+
+
+# Checks if the given string is blank.
+#
+# Arguments:
+#
+#   $1 - [IN][REQUIRED] String to check
+#
+# Example:
+#
+#   if minish_string_isblank ""; then
+#       echo "BLANK"
+#   fi
+#
+#   if minish_string_isblank "   "; then
+#       echo "BLANK"
+#   fi
+function minish_string_isblank() {
+
+    [[ "${1}" == "" ]] || [[ "${1}" =~ ^[[:space:]]+$ ]]
+}
