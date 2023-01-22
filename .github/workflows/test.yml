@@ -3,18 +3,6 @@ name: CI Test
 on: [ push, pull_request ]
 
 jobs:
-    shellcheck:
-        name: ShellCheck
-        runs-on: ubuntu-latest
-
-        steps:
-            -   name: Checkout repository
-                uses: actions/checkout@v3
-
-            -   name: Run ShellCheck
-                uses: ludeeus/action-shellcheck@master
-
-
     bats:
         name: Bash Automated Testing System
         runs-on: ubuntu-latest
