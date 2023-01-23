@@ -51,7 +51,18 @@ function minish_string_length() {
 #   minish_string_trim "  hello world  "
 function minish_string_trim() {
 
-    echo "${1}" | sed -e 's/^[[:space:]]*//' | sed -e 's/[[:space:]]*$//'
+    local tmp="${1}";
+    local current_size=-1
+    local new_size=0
+
+    while (( current_size != new_size )); do
+        current_size=${#tmp}
+        tmp="${tmp#[[:space:]]}"
+        tmp="${tmp%[[:space:]]}"
+        new_size=${#tmp}
+    done
+
+    echo "${tmp}"
 }
 
 
@@ -66,8 +77,17 @@ function minish_string_trim() {
 #   minish_string_ltrim "  hello world"
 function minish_string_ltrim() {
 
-    # shellcheck disable=SC2001
-    echo "${1}" | sed -e 's/^[[:space:]]*//'
+    local tmp="${1}";
+    local current_size=-1
+    local new_size=0
+
+    while (( current_size != new_size )); do
+        current_size=${#tmp}
+        tmp="${tmp#[[:space:]]}"
+        new_size=${#tmp}
+    done
+
+    echo "${tmp}"
 }
 
 
@@ -82,8 +102,17 @@ function minish_string_ltrim() {
 #   minish_string_rtrim "hello world  "
 function minish_string_rtrim() {
 
-    # shellcheck disable=SC2001
-    echo "${1}" | sed -e 's/[[:space:]]*$//'
+    local tmp="${1}";
+    local current_size=-1
+    local new_size=0
+
+    while (( current_size != new_size )); do
+        current_size=${#tmp}
+        tmp="${tmp%[[:space:]]}"
+        new_size=${#tmp}
+    done
+
+    echo "${tmp}"
 }
 
 
