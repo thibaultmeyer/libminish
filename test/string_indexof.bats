@@ -51,3 +51,10 @@ load ../lib/libminish_string
     [ "$status" -eq 0 ]
     [ "$output" == "0" ]
 }
+
+@test "minish_string_indexof() matching whole string" {
+    run minish_string_indexof "hello world" "hello world"
+
+    [ "$status" -eq 0 ]
+    [ "$output" == "0" ]
+}

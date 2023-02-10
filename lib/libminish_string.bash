@@ -208,14 +208,12 @@ function minish_string_reverse() {
 #
 # Example:
 #
-#   minish_string_endswith "hello world" "orld"
+#   if minish_string_endswith "hello world" "orld"; then
+#       echo "Yes"
+#   fi
 function minish_string_endswith() {
 
-    if [[ "${1}" == *"${2}" ]]; then
-        echo "1"
-    else
-        echo "0"
-    fi
+    [[ "${1}" == *"${2}" ]]
 }
 
 
@@ -228,14 +226,12 @@ function minish_string_endswith() {
 #
 # Example:
 #
-#   minish_string_endswith "hello world" "hell"
+#   if minish_string_startswith "hello world" "hell"; then
+#       echo "Yes"
+#   fi
 function minish_string_startswith() {
 
-    if [[ "${1}" == "${2}"* ]]; then
-        echo "1"
-    else
-        echo "0"
-    fi
+    [[ "${1}" == "${2}"* ]]
 }
 
 

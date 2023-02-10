@@ -7,26 +7,26 @@ load ../lib/libminish_string
     run minish_string_endswith
 
     [ "$status" -eq 0 ]
-    [ "$output" == "1" ]
+    [ "$output" == "" ]
 }
 
 @test "minish_string_endswith() ends with empty" {
     run minish_string_endswith "hello world"
 
     [ "$status" -eq 0 ]
-    [ "$output" == "1" ]
+    [ "$output" == "" ]
 }
 
 @test "minish_string_endswith() matching content" {
     run minish_string_endswith "hello world" "world"
 
     [ "$status" -eq 0 ]
-    [ "$output" == "1" ]
+    [ "$output" == "" ]
 }
 
 @test "minish_string_endswith() no matching content" {
     run minish_string_endswith "hello world" "hello"
 
-    [ "$status" -eq 0 ]
-    [ "$output" == "0" ]
+    [ "$status" -eq 1 ]
+    [ "$output" == "" ]
 }
