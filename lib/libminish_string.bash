@@ -127,13 +127,13 @@ function minish_string_rtrim() {
 #   minish_string_capitalize "hello world"
 function minish_string_capitalize() {
 
-    local -r minish_strcap_lower="$(echo "${1}" | tr '[:upper:]' '[:lower:]')"
+    local -r minish_strcap_lower="${1,,}"
     local minish_strcap_tmp=""
     local minish_strcap_need_uppercase=true
 
     for (( idx = 0; idx < ${#minish_strcap_lower}; idx++ )); do
         if [[ ${minish_strcap_need_uppercase} == true ]]; then
-            minish_strcap_tmp="${minish_strcap_tmp}$(echo "${minish_strcap_lower:${idx}:1}" | tr '[:lower:]' '[:upper:]')"
+            minish_strcap_tmp="${minish_strcap_tmp}$(minish_string_uppercase "${minish_strcap_lower:${idx}:1}")"
             minish_strcap_need_uppercase=false
         else
             minish_strcap_tmp="${minish_strcap_tmp}${minish_strcap_lower:${idx}:1}"
